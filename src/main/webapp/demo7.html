@@ -1,17 +1,78 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<meta charset="utf-8" />
 		<title>v-text与v-html</title>
+		<style>
+			#div {
+				width: 200px;
+				height: 200px;
+
+			}
+		</style>
+
 		<script src="js/vuejs-2.5.16.js"></script>
 	</head>
 	<body>
 		<div id="app">
-			<div></div>
-			<div></div>
+			<div v-text="message"></div>
+			<div v-html="message"></div>
+			<div id="div" v-bind:style="ys"></div>
+			<input type="text" v-on:keydown.down="fun1"/><br>
+			<!--<ul>
+				&lt;!&ndash;<li v-for="(item) in arr">{{item}}</li>&ndash;&gt;
+				<li v-for="(porduct,index) in productarr">{{index}}||{{product.id}}||{{product.name}}||{{product.pice}}</li>
+			</ul>-->
+			<table border="1">
+				<tr >
+					<td>列表序号</td>
+					<td>ID</td>
+					<td>NAME</td>
+					<td>PRICE</td>
+				</tr>
+				<tr v-for="(product,index) in productarr">
+					<td>{{index+1}}</td>
+					<td>{{product.id}}</td>
+					<td>{{product.name}}</td>
+					<td>{{product.pice}}</td>
+				</tr>
+			</table>
+			<input type="text" v-model="UserModel.username"/><br>
+			<input type="text" v-model="UserModel.sex"/><br>
+			<input type="text" v-model="UserModel.age"/><br>
+			<input type="text" v-model="UserModel.birthDay"/><br>
+			<input type="text" value="233333333333"/><br>
+
 		</div>
 	</body>
 	<script>
 		//view model
+		new Vue({
+			el:"#app",
+			data:{
+				message:"<p>Hello</p>",
+				ys:"background-color: red",
+				arr:[1,2,3,4,5,6,7],
+				productarr:[
+					{id:1, name:"压缩饼干", pice:26,},
+					{id:2, name:"笔记本电脑", pice:5026,},
+					{id:3, name:"白T", pice:86,},
+					{id:4, name:"匡威板鞋", pice:260,},
+					{id:5, name:"Benz", pice:260000,}
+				],
+				UserModel:{
+					username:"yuening",
+					sex:"男",
+					age:"23",
+					birthDay:"11-22"
+				}
+			},
+			methods:{
+				fun1:function () {
+					alert("enter")
+				}
+			}
+		});
 	</script>
 </html>

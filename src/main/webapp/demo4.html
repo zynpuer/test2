@@ -7,9 +7,12 @@
 		<style>
 			#div {
 				background-color: red;
+				height: 500px;
+				width: 200px;
 			}
 		</style>
 		<script src="js/vuejs-2.5.16.js"></script>
+
 	</head>
 
 	<body>
@@ -19,10 +22,22 @@
 			</div>
 
 		</div>
+		<script>
+			new Vue({
+				el:("#app"),
+				methods:{
+					fun1:function () {
+						alert("鼠标悬停在了div上")
+					},
+					fun2:function (event) {
+						alert("鼠标悬停在了textarea上")
+						event.stopPropagation();
+					}
+				}
+			});
+
+		</script>
 	</body>
-	<script>
-		//view model
-		
-	</script>
+
 
 </html>

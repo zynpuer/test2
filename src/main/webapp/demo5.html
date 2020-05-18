@@ -4,20 +4,58 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>v-on:事件修饰符</title>
-
+		<style>
+			#div {
+				background-color: red;
+				height: 500px;
+				width: 200px;
+			}
+		</style>
 		<script src="js/vuejs-2.5.16.js"></script>
 	</head>
-
-	<body>
-		<div id="app">
-		
-		</div>
-	</body>
 	<script>
-		//view model
-		
-		
-		
+		function baidu() {
+
+			return false;
+		}
+
 	</script>
+	<body>
+		<!--<div id="app">
+			<form action="https://www.baidu.com"  mothed="post" onsubmit="return baidu()">
+				<input type="submit" value="提交"/>
+			</form>
+		</div>-->
+		<div id="app">
+			<form action="https://www.baidu.com"  mothed="post" @submit>
+				<input type="submit" value="提交"/>
+			</form>
+			<div @mouseover="fun1" id="div">
+				<textarea @mouseover.stop="fun2($event)">这是一个文件域</textarea>
+			</div>
+		</div>
+		<!--<div id="div1">
+			<div @mouseover="fun1" id="div">
+				<textarea @mouseover.stop="fun2($event)">这是一个文件域</textarea>
+			</div>
+		</div>-->
+		<script>
+			//view model
+			new Vue({
+				el:"#app",
+				methods:{
+					fun1:function () {
+						alert("鼠标悬停在了div上")
+					},
+					fun2:function (event) {
+						alert("鼠标悬停在了textarea上")
+
+					}
+				}
+			});
+
+		</script>
+	</body>
+
 
 </html>
